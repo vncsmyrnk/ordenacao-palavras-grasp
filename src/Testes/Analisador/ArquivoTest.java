@@ -24,7 +24,7 @@ public class ArquivoTest {
         palavrasEsperadas.add(new Palavra("palavra1"));
         palavrasEsperadas.add(new Palavra("palavra3"));
 
-        assertEquals(palavrasEsperadas, a.readFile());
+        assertEquals(palavrasEsperadas, a.carregaArquivo());
     }
 
     @Test
@@ -81,9 +81,6 @@ public class ArquivoTest {
         palavrasEsperadas.add(new Palavra("dolor"));
         palavrasEsperadas.add(new Palavra("consectetur"));
 
-        a.frequencia();
-        LinkedList<Palavra> palavrasMaisFrequentes = a.ordenacaoFrequencia();
-
-        assertEquals(palavrasEsperadas, palavrasMaisFrequentes);
+        assertEquals(palavrasEsperadas, a.frequencia());
     }
 }

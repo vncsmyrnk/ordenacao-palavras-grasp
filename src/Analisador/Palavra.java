@@ -9,14 +9,25 @@ public class Palavra implements Comparable<Palavra> {
         this.frequencia = 1;
     }
 
+    /**
+     * Obtem o conteudo da palavra
+     * 
+     * @return
+     */
     public String getConteudo() {
         return conteudo;
     }
 
+    /**
+     * Obtem a frequencia da palavra
+     */
     public int getFrequencia() {
         return frequencia;
     }
 
+    /**
+     * Contabiliza uma ocorrencia da palavra
+     */
     public void novaOcorrencia() {
         this.frequencia++;
     }
