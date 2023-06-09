@@ -1,12 +1,12 @@
 package Analisador;
 
-public class Palavra {
+public class Palavra implements Comparable<Palavra> {
     private String conteudo;
     private int frequencia;
 
     public Palavra(String conteudo) {
         this.conteudo = conteudo;
-        this.frequencia = 0;
+        this.frequencia = 1;
     }
 
     public String getConteudo() {
@@ -25,6 +25,11 @@ public class Palavra {
     public boolean equals(Object o) {
         final Palavra p = (Palavra) o;
         return this.conteudo.equals(p.getConteudo());
+    }
+
+    @Override
+    public int compareTo(Palavra p) {
+        return this.getConteudo().compareTo(p.getConteudo());
     }
 
 }
