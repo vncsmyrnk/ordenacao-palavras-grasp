@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat $1 | tr -s ' ' '\n' | sort
+cat $1 | tr -s ' ' '\n' | LC_COLLATE=C sort

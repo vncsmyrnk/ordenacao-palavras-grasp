@@ -1,5 +1,7 @@
 package Analisador;
 
+import java.util.Comparator;
+
 public class Palavra implements Comparable<Palavra> {
     private String conteudo;
     private int frequencia;
@@ -30,6 +32,37 @@ public class Palavra implements Comparable<Palavra> {
      */
     public void novaOcorrencia() {
         this.frequencia++;
+    }
+
+    /**
+     * Retorna um comparator que ordena por ordem lexografica do conteudo
+     * 
+     * @return
+     */
+    public static Comparator<Palavra> getComparatorLexografico() {
+        return new Comparator<Palavra>() {
+            public int compare(Palavra p1, Palavra p2) {
+                return p1.compareTo(p2);
+            }
+        };
+    }
+
+    /**
+     * Retorna um comparator que retorna por ordem decrescente de frequencia e
+     * crescente do conteudo
+     * 
+     * @return
+     */
+    public static Comparator<Palavra> getComparatorFrequencia() {
+        return new Comparator<Palavra>() {
+            public int compare(Palavra p1, Palavra p2) {
+                int ordenacaoFrequencia = p2.getFrequencia() - p1.getFrequencia();
+                if (ordenacaoFrequencia == 0) {
+                    return p1.compareTo(p2);
+                }
+                return ordenacaoFrequencia;
+            }
+        };
     }
 
     @Override

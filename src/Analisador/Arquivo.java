@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.LinkedList;
 
 import Ordenador.MergeSort;
@@ -39,6 +38,9 @@ public class Arquivo {
 
                 Arrays.stream(palavrasLinha)
                         .forEach(palavra -> {
+                            if (palavra.isEmpty()) {
+                                return;
+                            }
                             palavras.add(new Palavra(palavra));
                         });
             }
@@ -86,11 +88,7 @@ public class Arquivo {
      */
     public LinkedList<Palavra> ordenacaoLexografica() throws IOException {
         this.carregaArquivo();
-        MergeSort<Palavra> ms = new MergeSort<>(this.palavras, new Comparator<Palavra>() {
-            public int compare(Palavra p1, Palavra p2) {
-                return p1.compareTo(p2);
-            }
-        });
+        MergeSort<Palavra> ms = new MergeSort<>(this.palavras, Palavra.getComparatorLexografico());
         this.palavras = ms.sort();
         return this.palavras;
     }
@@ -103,15 +101,7 @@ public class Arquivo {
      */
     public LinkedList<Palavra> ordenacaoFrequencia() throws IOException {
         this.carregaArquivo();
-        MergeSort<Palavra> ms = new MergeSort<>(this.palavras, new Comparator<Palavra>() {
-            public int compare(Palavra p1, Palavra p2) {
-                int ordenacaoFrequencia = p2.getFrequencia() - p1.getFrequencia();
-                if (ordenacaoFrequencia == 0) {
-                    return p1.compareTo(p2);
-                }
-                return ordenacaoFrequencia;
-            }
-        });
+        MergeSort<Palavra> ms = new MergeSort<>(this.palavras, Palavra.getComparatorFrequencia());
         this.palavras = ms.sort();
         return this.palavras;
     }
@@ -124,7 +114,7 @@ public class Arquivo {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
             for (Palavra p : this.palavras) {
                 writer.write(
-                        (mostraFrequencia ? p.getFrequencia() : "") + " " + p.getConteudo() + "\n");
+                        (mostraFrequencia ? p.getFrequencia() + " " : "") + p.getConteudo() + "\n");
             }
         }
     }

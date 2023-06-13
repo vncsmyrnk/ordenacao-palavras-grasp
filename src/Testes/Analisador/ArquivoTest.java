@@ -11,7 +11,7 @@ import Analisador.Arquivo;
 import Analisador.Palavra;
 
 public class ArquivoTest {
-    private final String basePath = "/home/vncsmyrnk/puc/5p/fpa/ordenacao-palavras-grasp/data";
+    private final String basePath = "/home/vncsmyrnk/puc/5p/fpa/ordenacao-palavras-grasp/data/testes";
 
     @Test
     public void testLeituraArquivo() throws IOException {
@@ -73,13 +73,13 @@ public class ArquivoTest {
         p3.novaOcorrencia();
 
         palavrasEsperadas.add(p1);
-        palavrasEsperadas.add(p2);
         palavrasEsperadas.add(p3);
-        palavrasEsperadas.add(new Palavra("quisquam"));
-        palavrasEsperadas.add(new Palavra("porro"));
-        palavrasEsperadas.add(new Palavra("ipsum"));
-        palavrasEsperadas.add(new Palavra("dolor"));
+        palavrasEsperadas.add(p2);
         palavrasEsperadas.add(new Palavra("consectetur"));
+        palavrasEsperadas.add(new Palavra("dolor"));
+        palavrasEsperadas.add(new Palavra("ipsum"));
+        palavrasEsperadas.add(new Palavra("porro"));
+        palavrasEsperadas.add(new Palavra("quisquam"));
 
         assertEquals(palavrasEsperadas, a.frequencia());
     }
