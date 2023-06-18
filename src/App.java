@@ -3,10 +3,10 @@ import Analisador.Arquivo;
 public class App {
     public static void main(String[] args) throws Exception {
         long startTime, estimatedTime;
-        String[] filePaths = { "./data/palavras_100k.txt", "./data/palavras_200k.txt", "./data/palavras_300k.txt",
+        final String[] filePaths = { "./data/palavras_100k.txt", "./data/palavras_200k.txt", "./data/palavras_300k.txt",
                 "./data/palavras_400k.txt", "./data/palavras_500k.txt", "./data/palavras_600k.txt",
                 "./data/palavras_700k.txt" };
-        String[] outputFilePaths = { "./output/palavras_100k.txt", "./output/palavras_200k.txt",
+        final String[] outputFilePaths = { "./output/palavras_100k.txt", "./output/palavras_200k.txt",
                 "./output/palavras_300k.txt",
                 "./output/palavras_400k.txt", "./output/palavras_500k.txt", "./output/palavras_600k.txt",
                 "./output/palavras_700k.txt" };

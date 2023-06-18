@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import Analisador.Arquivo;
 import Analisador.Palavra;
+import MochilaPalavras.Mochila;
 
 public class ArquivoTest {
     private final String basePath = "/home/vncsmyrnk/puc/5p/fpa/ordenacao-palavras-grasp/data/testes";
@@ -24,7 +25,7 @@ public class ArquivoTest {
         palavrasEsperadas.add(new Palavra("palavra1"));
         palavrasEsperadas.add(new Palavra("palavra3"));
 
-        assertEquals(palavrasEsperadas, a.carregaArquivo());
+        assertEquals(palavrasEsperadas, a.carregaPalavras());
     }
 
     @Test
@@ -82,5 +83,81 @@ public class ArquivoTest {
         palavrasEsperadas.add(new Palavra("quisquam"));
 
         assertEquals(palavrasEsperadas, a.frequencia());
+    }
+
+    @Test
+    public void testMochila1() throws IOException {
+        Arquivo a = new Arquivo(
+                this.basePath + "/arquivo-teste3.txt");
+
+        Mochila m = new Mochila(a);
+        int valorCalculado = m.valorMaximo(10);
+        assertEquals(7, valorCalculado);
+    }
+
+    @Test
+    public void testMochila2() throws IOException {
+        Arquivo a = new Arquivo(
+                this.basePath + "/arquivo-teste3.txt");
+
+        Mochila m = new Mochila(a);
+        int valorCalculado = m.valorMaximo(11);
+        assertEquals(9, valorCalculado);
+    }
+
+    @Test
+    public void testMochila3() throws IOException {
+        Arquivo a = new Arquivo(
+                this.basePath + "/arquivo-teste3.txt");
+
+        Mochila m = new Mochila(a);
+        int valorCalculado = m.valorMaximo(12);
+        assertEquals(9, valorCalculado);
+    }
+
+    @Test
+    public void testMochila4() throws IOException {
+        Arquivo a = new Arquivo(
+                this.basePath + "/arquivo-teste3.txt");
+
+        Mochila m = new Mochila(a);
+        int valorCalculado = m.valorMaximo(16);
+        assertEquals(10, valorCalculado);
+    }
+
+    @Test
+    public void testMochila5() throws IOException {
+        Arquivo a = new Arquivo(
+                this.basePath + "/arquivo-teste3.txt");
+
+        Mochila m = new Mochila(a);
+        int valorCalculado = m.valorMaximo(20);
+        assertEquals(10, valorCalculado);
+    }
+
+    @Test
+    public void testMochila100k_50() throws IOException {
+        Arquivo a = new Arquivo(
+                this.basePath + "/../palavras_100k.txt");
+
+        Mochila m = new Mochila(a);
+
+        int valorCalculado = m.valorMaximo(50);
+        assertEquals(19987, valorCalculado);
+
+        valorCalculado = m.valorMaximo(51);
+        assertEquals(19987, valorCalculado);
+
+        valorCalculado = m.valorMaximo(52);
+        assertEquals(19987, valorCalculado);
+
+        valorCalculado = m.valorMaximo(53);
+        assertEquals(19987, valorCalculado);
+
+        valorCalculado = m.valorMaximo(54);
+        assertEquals(21231, valorCalculado);
+
+        valorCalculado = m.valorMaximo(80);
+        assertEquals(24628, valorCalculado);
     }
 }

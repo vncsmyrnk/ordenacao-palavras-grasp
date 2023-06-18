@@ -23,7 +23,7 @@ public class Arquivo {
     /**
      * Percorre o arquivo inicializando as palavras
      */
-    public LinkedList<Palavra> carregaArquivo() throws IOException {
+    public LinkedList<Palavra> carregaPalavras() throws IOException {
         if (!this.palavras.isEmpty()) {
             return this.palavras;
         }
@@ -87,7 +87,7 @@ public class Arquivo {
      * @throws IOException
      */
     public LinkedList<Palavra> ordenacaoLexografica() throws IOException {
-        this.carregaArquivo();
+        this.carregaPalavras();
         MergeSort<Palavra> ms = new MergeSort<>(this.palavras, Palavra.getComparatorLexografico());
         this.palavras = ms.sort();
         return this.palavras;
@@ -100,7 +100,7 @@ public class Arquivo {
      * @throws IOException
      */
     public LinkedList<Palavra> ordenacaoFrequencia() throws IOException {
-        this.carregaArquivo();
+        this.carregaPalavras();
         MergeSort<Palavra> ms = new MergeSort<>(this.palavras, Palavra.getComparatorFrequencia());
         this.palavras = ms.sort();
         return this.palavras;

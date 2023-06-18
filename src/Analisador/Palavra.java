@@ -2,6 +2,10 @@ package Analisador;
 
 import java.util.Comparator;
 
+/*
+ * Palavra compreende um conteudo (String) e indicacoes sobre esse conteudo no texto onde se encontra
+ */
+
 public class Palavra implements Comparable<Palavra> {
     private String conteudo;
     private int frequencia;
@@ -28,7 +32,7 @@ public class Palavra implements Comparable<Palavra> {
     }
 
     /**
-     * Contabiliza uma ocorrencia da palavra
+     * Contabiliza uma ocorrencia da palavra no texto onde se encontra
      */
     public void novaOcorrencia() {
         this.frequencia++;
